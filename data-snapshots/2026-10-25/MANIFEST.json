@@ -1,0 +1,23 @@
+{
+ "snapshot_date": "2026-10-25",
+ "license": "CC-BY-4.0",
+ "provenance": "https://duewall.com",
+ "files": {
+  "events.csv": {
+   "sha256": "413461b48681aca83e45b669dcb533a941e2ba94bb6cf09ba63f9e205a062f56",
+   "bytes": 70591
+  },
+  "maturity_wall_sample.json": {
+   "sha256": "6f5ca457f79ca8efecfb19b6bb2dfa6e63b13e065f43960771ad0eabf616f6fd",
+   "bytes": 2264
+  },
+  "pools_snapshot.json": {
+   "sha256": "f1469854936ee39019e0556a786af10982514e97a4399fded93bc78845716afe",
+   "bytes": 17616
+  },
+  "terms.csv": {
+   "sha256": "1cd5b83bb16ef2f3324db41ee5dc8bffc0757bc2503f79d631fe460c4d84c003",
+   "bytes": 1200
+  }
+ }
+}

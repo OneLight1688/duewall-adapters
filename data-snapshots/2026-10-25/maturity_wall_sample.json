@@ -1,0 +1,126 @@
+{
+ "as_of": "2026-10-25",
+ "note": "Maple 链上贷款到期按月聚合。历史到期为真实链上数据；未来到期为空 —— Maple 公开 GraphQL 不含活跃贷款的未来到期日，需贷款文档（off-chain）来源，见 W1 复盘。",
+ "months": {
+  "2021-08": {
+   "past_count": 9,
+   "past_amount_usd": 0.0
+  },
+  "2021-10": {
+   "past_count": 3,
+   "past_amount_usd": 0.0
+  },
+  "2021-11": {
+   "past_count": 1,
+   "past_amount_usd": 0.0
+  },
+  "2021-12": {
+   "past_count": 4,
+   "past_amount_usd": 0.0
+  },
+  "2022-01": {
+   "past_count": 10,
+   "past_amount_usd": 0.0
+  },
+  "2022-02": {
+   "past_count": 17,
+   "past_amount_usd": 0.0
+  },
+  "2022-03": {
+   "past_count": 12,
+   "past_amount_usd": 0.0
+  },
+  "2022-04": {
+   "past_count": 11,
+   "past_amount_usd": 0.0
+  },
+  "2022-05": {
+   "past_count": 22,
+   "past_amount_usd": 0.0
+  },
+  "2022-06": {
+   "past_count": 15,
+   "past_amount_usd": 0.0
+  },
+  "2022-07": {
+   "past_count": 11,
+   "past_amount_usd": 0.0
+  },
+  "2022-08": {
+   "past_count": 28,
+   "past_amount_usd": 0.0
+  },
+  "2022-09": {
+   "past_count": 12,
+   "past_amount_usd": 0.0
+  },
+  "2022-10": {
+   "past_count": 8,
+   "past_amount_usd": 0.0
+  },
+  "2022-11": {
+   "past_count": 17,
+   "past_amount_usd": 0.0
+  },
+  "2022-12": {
+   "past_count": 21,
+   "past_amount_usd": 0.0
+  },
+  "2023-01": {
+   "past_count": 10,
+   "past_amount_usd": 0.0
+  },
+  "2023-02": {
+   "past_count": 1,
+   "past_amount_usd": 0.0
+  },
+  "2023-03": {
+   "past_count": 1,
+   "past_amount_usd": 0.0
+  },
+  "2023-04": {
+   "past_count": 1,
+   "past_amount_usd": 0.0
+  },
+  "2023-05": {
+   "past_count": 4,
+   "past_amount_usd": 0.0
+  },
+  "2023-06": {
+   "past_count": 3,
+   "past_amount_usd": 0.0
+  },
+  "2023-07": {
+   "past_count": 4,
+   "past_amount_usd": 0.0
+  },
+  "2023-08": {
+   "past_count": 2,
+   "past_amount_usd": 0.0
+  },
+  "2023-09": {
+   "past_count": 1,
+   "past_amount_usd": 0.0
+  },
+  "2023-10": {
+   "past_count": 10,
+   "past_amount_usd": 0.0
+  },
+  "2023-11": {
+   "past_count": 2,
+   "past_amount_usd": 0.0
+  },
+  "2024-11": {
+   "past_count": 1,
+   "past_amount_usd": 0.0
+  },
+  "2025-02": {
+   "past_count": 1,
+   "past_amount_usd": 0.0
+  },
+  "2025-03": {
+   "past_count": 1,
+   "past_amount_usd": 0.0
+  }
+ }
+}
