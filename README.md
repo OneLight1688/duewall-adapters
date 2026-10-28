@@ -38,6 +38,30 @@ carries `source_url` and `verified_by`. See
 [`adapters/README.md`](adapters/README.md) for the full contract and
 [`adapters/maple_loans.py`](adapters/maple_loans.py) for a working example.
 
+## Quickstart
+
+**Just want the data?** (no code required) — grab the latest CSV from
+[`data-snapshots/`](data-snapshots/) and cite per
+[`data-snapshots/CITATION.md`](data-snapshots/CITATION.md). Or in Python:
+
+```python
+import pandas as pd
+
+terms = pd.read_csv("data-snapshots/2026-10-25/terms.csv")
+events = pd.read_csv("data-snapshots/2026-10-25/events.csv")
+
+# every row links back to its source document
+print(events[["token", "event_type", "date", "status", "source_url"]].head())
+```
+
+**Want to refresh the data yourself?** — run an adapter against its public
+source (standard library only, no key required):
+
+```bash
+python adapters/maple_loans.py --out events_maple.jsonl
+# -> 266 loans -> events_maple.jsonl | future-dated: 0
+```
+
 ## Data snapshots
 
 See [`data-snapshots/`](data-snapshots/) — CSV/JSON, one directory per snapshot
