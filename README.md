@@ -1,7 +1,8 @@
 # duewall-adapters
 
 Open-source extraction adapters and CC-BY data snapshots for
-[DueWall](https://duewall.com) — **the maturity calendar for tokenized credit**.
+[DueWall](https://duewall.com) — **the maturity calendar for tokenized credit**,
+built for the RWA (real-world asset) data ecosystem.
 
 Public on-chain APIs only show settled history. When a tokenized private-credit
 loan matures, when a fund's redemption window opens, what the lockup terms are —
