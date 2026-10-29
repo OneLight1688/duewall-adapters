@@ -1,4 +1,4 @@
-# Event schema v1.1 — DueWall structured events
+# Event schema v1.2 — DueWall structured events
 
 All adapters emit a flat list of JSON objects (JSONL), one event per line.
 Every field is traceable: `source_url` points at the document or API response
@@ -11,7 +11,7 @@ state.
 |---|---|---|
 | `token` | string | `issuer_namespace:pool_or_loan_id:symbol`, e.g. `centrifuge:281474976710663:JAAA`, `maple:loan:0x…` |
 | `issuer` | string | lowercase namespace: `maple`, `centrifuge`, `ondo-yield-assets`, … |
-| `event_type` | enum | `maturity` \| `redemption_window` \| `nav_report` |
+| `event_type` | enum | `maturity` \| `redemption_window` \| `nav_report` \| `maturity_resolution` |
 | `date` | string\|null | ISO `YYYY-MM-DD` when known; null for recurring/open-ended |
 | `date_confidence` | enum | `exact` \| `estimated` \| `unknown` |
 | `date_recurring` | string\|null | e.g. `daily` — set when the window recurs rather than occurring once |
@@ -26,6 +26,29 @@ state.
 | `last_updated` | string | ISO timestamp |
 | `terms` | object\|null | `redemption_window` only — structured liquidity terms (below) |
 | `extra` | object | extractor-specific extras (e.g. `aum_ccy`, `startDate`) |
+
+## `maturity_resolution` events (v1.2)
+
+Emitted **after** a maturity date passes, recording how it resolved. This is
+what turns expired dates into a backtestable corpus: a maturity wall only has
+analytical value once you know whether it was paid, rolled, extended, or
+defaulted.
+
+| extra field | type | notes |
+|---|---|---|
+| `resolution` | enum | `paid` \| `rolled` \| `extended` \| `defaulted` \| `refinanced` \| `liquidated` |
+| `chain_state` | string | raw on-chain/issuer state the resolution was derived from |
+| `maturity_date` | string | the original maturity date this resolution belongs to |
+
+Rules:
+- `date` on a resolution event is the **observation date** (when the outcome
+  was recorded); the original obligation date lives in
+  `extra.maturity_date` — never conflate the two.
+- Resolutions are never guessed while an obligation is still pending; the
+  event is only emitted once a terminal state is observable.
+- Chain-state mappings are explicit per adapter (e.g. Maple: `Matured` →
+  `paid`, `Liquidated`/`LiquidatedAndClaimed` → `liquidated`). Document-derived
+  resolutions require a quoted source sentence (human-verified).
 
 ## `terms` object (redemption_window events)
 
