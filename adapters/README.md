@@ -18,13 +18,16 @@ def fetch(source: SourceConfig) -> list[dict]:
 `SourceConfig` is a small dataclass with the issuer namespace, base URLs, and
 an output directory for raw response caches (so runs are reproducible).
 
-## Reference implementation
+## Reference implementations
 
-[`maple_loans.py`](maple_loans.py) — enumerates Maple's public GraphQL API
-(266 loans, all matured/liquidated) and emits `maturity` events. This adapter
-produced the "266 loans, zero future maturities on-chain" finding; it exists
-because the chain's archive is the *verification baseline* for the
-forward-looking calendar built from documents.
+- [`maple_loans.py`](maple_loans.py) — enumerates Maple's public GraphQL API
+  (266 loans, all matured/liquidated) and emits `maturity` events. This adapter
+  produced the "266 loans, zero future maturities on-chain" finding; it exists
+  because the chain's archive is the *verification baseline* for the
+  forward-looking calendar built from documents.
+- [`goldfinch_pools.py`](goldfinch_pools.py) — reads Goldfinch's official
+  public Goldsky subgraph (no auth): 24 tranched pools + 31 credit lines, all
+  matured. Same verification-baseline role.
 
 ## Roadmap (as we clean them for publication)
 
