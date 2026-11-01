@@ -63,6 +63,20 @@ python adapters/maple_loans.py --out events_maple.jsonl
 # -> 266 loans -> events_maple.jsonl | future-dated: 0
 ```
 
+## Free public API (no key required)
+
+The full dataset behind this repo is also served as static JSON at
+**https://duewall.com/api/v1/** — CORS-enabled, CC-BY 4.0:
+
+```bash
+curl https://duewall.com/api/v1/events.json   # all events (schema v1.2)
+curl https://duewall.com/api/v1/terms.json    # liquidity terms per fund
+curl https://duewall.com/api/v1/pools.json    # pool NAV + TVL/APY snapshot
+curl https://duewall.com/api/v1/meta.json     # version, counts, license
+```
+
+Docs: **https://duewall.com/api/** · Schema: [`docs/SCHEMA.md`](docs/SCHEMA.md)
+
 ## Data snapshots
 
 See [`data-snapshots/`](data-snapshots/) — CSV/JSON, one directory per snapshot
