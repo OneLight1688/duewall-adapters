@@ -1,0 +1,957 @@
+{
+ "fetched_at": "2026-10-30T22:00:01+00:00",
+ "sources": {
+  "centrifuge": [
+   {
+    "id": "281474976710657",
+    "name": "Janus Henderson Anemoy Treasury Fund",
+    "isActive": true,
+    "currency": "840",
+    "tokens": []
+   },
+   {
+    "id": "281474976710658",
+    "name": "Centrifuge RWA Test Pool",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "RWAt",
+      "price": 1.0,
+      "issued": 19.0,
+      "nav_usd": 19.0
+     },
+     {
+      "symbol": "deRWAt",
+      "price": 1.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     }
+    ]
+   },
+   {
+    "id": "281474976710659",
+    "name": "JAAA deRWA",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "deJAAA",
+      "price": 1.05289,
+      "issued": 9073165.57,
+      "nav_usd": 9553043.5
+     }
+    ]
+   },
+   {
+    "id": "281474976710660",
+    "name": "JTRSY deRWA",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "deJTRSY",
+      "price": 1.041481,
+      "issued": 10694471.06,
+      "nav_usd": 11138083.55
+     }
+    ]
+   },
+   {
+    "id": "281474976710661",
+    "name": null,
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "DISTRICT",
+      "price": 1.012,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     }
+    ]
+   },
+   {
+    "id": "281474976710662",
+    "name": "Janus Henderson Treasury Fund",
+    "isActive": true,
+    "currency": "5192296858534827628530496329220097",
+    "tokens": [
+     {
+      "symbol": "JTRSY",
+      "price": 1.12104,
+      "issued": 100567501.57,
+      "nav_usd": 112740217.15
+     }
+    ]
+   },
+   {
+    "id": "281474976710663",
+    "name": "Janus Henderson AAA CLO Fund",
+    "isActive": true,
+    "currency": "5192296858534827628530496329220097",
+    "tokens": [
+     {
+      "symbol": "JAAA",
+      "price": 1.054426,
+      "issued": 538704167.05,
+      "nav_usd": 568023921.62
+     }
+    ]
+   },
+   {
+    "id": "281474976710664",
+    "name": "Anemoy Tokenized Apollo Diversified Credit Fund",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "ACRDX",
+      "price": 1.021137,
+      "issued": 30472586.07,
+      "nav_usd": 31116672.24
+     }
+    ]
+   },
+   {
+    "id": "281474976710665",
+    "name": "Janus Henderson Anemoy S&P 500® Fund",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "SPXA",
+      "price": 1.15718,
+      "issued": 1767042.33,
+      "nav_usd": 2044786.35
+     }
+    ]
+   },
+   {
+    "id": "281474976710666",
+    "name": null,
+    "isActive": true,
+    "currency": "840",
+    "tokens": []
+   },
+   {
+    "id": "281474976710667",
+    "name": "ACRDX deRWA",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "deCRDX",
+      "price": 1.00002,
+      "issued": 100107.97,
+      "nav_usd": 100109.94
+     }
+    ]
+   },
+   {
+    "id": "281474976710668",
+    "name": "S&P 500 deRWA",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "deSPXA",
+      "price": 776.54924,
+      "issued": 2473.72,
+      "nav_usd": 1920964.45
+     }
+    ]
+   },
+   {
+    "id": "281474976710669",
+    "name": null,
+    "isActive": true,
+    "currency": "5192296858534827628530496329220100",
+    "tokens": [
+     {
+      "symbol": "BTC.b",
+      "price": 0.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     }
+    ]
+   },
+   {
+    "id": "281474976710670",
+    "name": null,
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "USD.b",
+      "price": 0.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     }
+    ]
+   },
+   {
+    "id": "281474976710671",
+    "name": "NYLIM US High Yield Bond Fund",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "HYB",
+      "price": 0.994217,
+      "issued": 645708.12,
+      "nav_usd": 641974.14
+     }
+    ]
+   },
+   {
+    "id": "281474976710672",
+    "name": "HYB deRWA",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "deHYB",
+      "price": 0.989607,
+      "issued": 146193.3,
+      "nav_usd": 144673.92
+     }
+    ]
+   },
+   {
+    "id": "281474976710673",
+    "name": null,
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "USHP",
+      "price": 1.0,
+      "issued": 9.0,
+      "nav_usd": 9.0
+     }
+    ]
+   },
+   {
+    "id": "281474976710674",
+    "name": "Zivoe",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "zSMB_OLD",
+      "price": 1.0,
+      "issued": 100011.93,
+      "nav_usd": 100011.93
+     },
+     {
+      "symbol": "zSMB",
+      "price": 1.147655,
+      "issued": 2303714.96,
+      "nav_usd": 2643870.09
+     }
+    ]
+   },
+   {
+    "id": "281474976710675",
+    "name": null,
+    "isActive": true,
+    "currency": "5192296858534827628530496329220116",
+    "tokens": [
+     {
+      "symbol": "USHPi",
+      "price": 1.0,
+      "issued": 9.0,
+      "nav_usd": 9.0
+     }
+    ]
+   },
+   {
+    "id": "281474976710676",
+    "name": "CFGS",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "CFGS",
+      "price": 0.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     }
+    ]
+   },
+   {
+    "id": "281474976710677",
+    "name": "Schroder International Selection Fund EM Bond",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "SISF",
+      "price": 1.002071,
+      "issued": 200000.0,
+      "nav_usd": 200414.14
+     }
+    ]
+   },
+   {
+    "id": "281474976710678",
+    "name": "Janus Henderson NASDAQ-100 Index® Fund",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "JQQQ",
+      "price": 1.000134,
+      "issued": 5000001.75,
+      "nav_usd": 5000669.4
+     }
+    ]
+   },
+   {
+    "id": "281474976710679",
+    "name": null,
+    "isActive": true,
+    "currency": "840",
+    "tokens": []
+   },
+   {
+    "id": "281474976710680",
+    "name": null,
+    "isActive": true,
+    "currency": "840",
+    "tokens": []
+   },
+   {
+    "id": "281474976710681",
+    "name": null,
+    "isActive": true,
+    "currency": "840",
+    "tokens": []
+   },
+   {
+    "id": "844424930131969",
+    "name": null,
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "ArkOdin",
+      "price": 1.488952,
+      "issued": 2884.77,
+      "nav_usd": 4295.28
+     },
+     {
+      "symbol": "LIMS",
+      "price": 1.239982,
+      "issued": 20310.06,
+      "nav_usd": 25184.11
+     },
+     {
+      "symbol": "emplifai",
+      "price": 1.231669,
+      "issued": 551.93,
+      "nav_usd": 679.8
+     },
+     {
+      "symbol": "ArkCon",
+      "price": 1.0,
+      "issued": 2.0,
+      "nav_usd": 2.0
+     },
+     {
+      "symbol": "ArkAgg",
+      "price": 0.947329,
+      "issued": 11.0,
+      "nav_usd": 10.42
+     },
+     {
+      "symbol": "HCCV",
+      "price": 1.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     },
+     {
+      "symbol": "ArkProove",
+      "price": 1.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     },
+     {
+      "symbol": "MRHB+",
+      "price": 1.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     },
+     {
+      "symbol": "JRRT",
+      "price": 1.008004,
+      "issued": 702.62,
+      "nav_usd": 708.24
+     },
+     {
+      "symbol": "APXR",
+      "price": 0.792376,
+      "issued": 10.0,
+      "nav_usd": 7.92
+     }
+    ]
+   },
+   {
+    "id": "844424930131970",
+    "name": null,
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "LIMS",
+      "price": 0.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     },
+     {
+      "symbol": "p.two",
+      "price": 0.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     }
+    ]
+   },
+   {
+    "id": "844424930131971",
+    "name": null,
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "ArkTEST",
+      "price": 1.433876,
+      "issued": 10.0,
+      "nav_usd": 14.34
+     },
+     {
+      "symbol": "ARKPLAY",
+      "price": 1.0,
+      "issued": 1.0,
+      "nav_usd": 1.0
+     },
+     {
+      "symbol": "ARKTEST01",
+      "price": 1.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     },
+     {
+      "symbol": "ARKTEST02",
+      "price": 0.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     },
+     {
+      "symbol": "ARKTEST03",
+      "price": 1.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     },
+     {
+      "symbol": "ARKTEST04",
+      "price": 1.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     },
+     {
+      "symbol": "ARKTEST05",
+      "price": 1.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     },
+     {
+      "symbol": "ARKTEST06",
+      "price": 0.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     },
+     {
+      "symbol": "ARKTESTT",
+      "price": 0.0,
+      "issued": 0.0,
+      "nav_usd": 0.0
+     }
+    ]
+   },
+   {
+    "id": "844424930131972",
+    "name": null,
+    "isActive": true,
+    "currency": "840",
+    "tokens": []
+   },
+   {
+    "id": "1125899906842625",
+    "name": "PE TEST",
+    "isActive": true,
+    "currency": "840",
+    "tokens": [
+     {
+      "symbol": "peqTEST",
+      "price": 1.01,
+      "issued": 5.92,
+      "nav_usd": 5.98
+     }
+    ]
+   }
+  ],
+  "defillama": [
+   {
+    "pool": "43641cf5-a92e-416b-bce9-27113d3c0db6",
+    "name": null,
+    "symbol": "USDC",
+    "project": "maple",
+    "chain": "Ethereum",
+    "tvlUsd": 2480282649,
+    "apy": 5.09327
+   },
+   {
+    "pool": "ac61ee82-2fe4-4f9b-a9cd-7fb33f598859",
+    "name": null,
+    "symbol": "USDY",
+    "project": "ondo-yield-assets",
+    "chain": "Ethereum",
+    "tvlUsd": 1299612708,
+    "apy": 3.75
+   },
+   {
+    "pool": "8edfdf02-cdbb-43f7-bca6-954e5fe56813",
+    "name": null,
+    "symbol": "USDT",
+    "project": "maple",
+    "chain": "Ethereum",
+    "tvlUsd": 688667464,
+    "apy": 4.92841
+   },
+   {
+    "pool": "4c004503-9587-46f2-a362-d23a80f4b691",
+    "name": null,
+    "symbol": "USDG",
+    "project": "maple",
+    "chain": "Ethereum",
+    "tvlUsd": 676666725,
+    "apy": 4.7398
+   },
+   {
+    "pool": "a66e2d12-188b-407d-aaec-d95640e08ef7",
+    "name": null,
+    "symbol": "USDY",
+    "project": "ondo-yield-assets",
+    "chain": "Stellar",
+    "tvlUsd": 538303557,
+    "apy": 3.75
+   },
+   {
+    "pool": "246659c9-877b-5dcc-92c1-cbd7bfcf0d85",
+    "name": null,
+    "symbol": "USAT",
+    "project": "centrifuge-protocol",
+    "chain": "Ethereum",
+    "tvlUsd": 279673997,
+    "apy": 5.46233
+   },
+   {
+    "pool": "80359eae-ff65-4fa6-842d-c971dc2928de",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Avalanche",
+    "tvlUsd": 263511687,
+    "apy": 5.46233
+   },
+   {
+    "pool": "1f8a60c7-e307-42cd-844c-18dec84f5137",
+    "name": null,
+    "symbol": "USDY",
+    "project": "ondo-yield-assets",
+    "chain": "Sei",
+    "tvlUsd": 259977409,
+    "apy": 3.75
+   },
+   {
+    "pool": "36e8a552-9e64-42da-b8f8-1a20866510d8",
+    "name": null,
+    "symbol": "OUSG",
+    "project": "ondo-yield-assets",
+    "chain": "XRPL",
+    "tvlUsd": 185483004,
+    "apy": 3.59
+   },
+   {
+    "pool": "00b83068-9f87-4411-b5d7-5d2ff48c40c4",
+    "name": null,
+    "symbol": "USDY",
+    "project": "ondo-yield-assets",
+    "chain": "Solana",
+    "tvlUsd": 180167663,
+    "apy": 3.75
+   },
+   {
+    "pool": "7436db9b-2872-46c8-81a2-da6baff902b7",
+    "name": null,
+    "symbol": "OUSG",
+    "project": "ondo-yield-assets",
+    "chain": "Ethereum",
+    "tvlUsd": 129550576,
+    "apy": 3.59
+   },
+   {
+    "pool": "ff1bb959-d160-4906-bad2-d3e37a1e92e8",
+    "name": null,
+    "symbol": "USDS",
+    "project": "centrifuge-protocol",
+    "chain": "Ethereum",
+    "tvlUsd": 97203479,
+    "apy": 4.5698
+   },
+   {
+    "pool": "8032e541-5c60-4c68-9202-2812e75dab57",
+    "name": null,
+    "symbol": "TBL",
+    "project": "openeden-tbill",
+    "chain": "XRPL",
+    "tvlUsd": 62913734,
+    "apy": 4.01369
+   },
+   {
+    "pool": "82469f6f-951d-4578-b47e-fb4df326f059",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Base",
+    "tvlUsd": 22802470,
+    "apy": 5.46233
+   },
+   {
+    "pool": "e140f3b2-0327-46ea-93f5-88b17b0a0a16",
+    "name": null,
+    "symbol": "TBILL",
+    "project": "openeden-tbill",
+    "chain": "Ethereum",
+    "tvlUsd": 21775033,
+    "apy": 4.01369
+   },
+   {
+    "pool": "1dee4660-d688-4800-8e0f-7af0d77bcde1",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Plume Mainnet",
+    "tvlUsd": 20721934,
+    "apy": 24.49732
+   },
+   {
+    "pool": "3007b64e-331d-425d-a7ae-33b8691da1a9",
+    "name": null,
+    "symbol": "USDY",
+    "project": "ondo-yield-assets",
+    "chain": "Sui",
+    "tvlUsd": 14373455,
+    "apy": 3.75
+   },
+   {
+    "pool": "f083596e-032d-4d6b-a7a8-1836d3f99bcd",
+    "name": null,
+    "symbol": "USDO",
+    "project": "openeden-usdo",
+    "chain": "Ethereum",
+    "tvlUsd": 14340891,
+    "apy": 3.44505
+   },
+   {
+    "pool": "14bd0ebc-1c70-4b61-80a9-91390179286a",
+    "name": null,
+    "symbol": "USDC",
+    "project": "credix",
+    "chain": "Solana",
+    "tvlUsd": 13406766,
+    "apy": 0.02994
+   },
+   {
+    "pool": "99181d82-5589-4ae6-b737-594aa11ded9f",
+    "name": null,
+    "symbol": "JTRSY",
+    "project": "centrifuge-protocol",
+    "chain": "Ethereum",
+    "tvlUsd": 11133378,
+    "apy": 4.56595
+   },
+   {
+    "pool": "e259a7bc-d2b0-41e5-b12d-a3c7b984560c",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Monad",
+    "tvlUsd": 10072084,
+    "apy": 0
+   },
+   {
+    "pool": "5341535f-29c6-4699-af99-15170bb3dfe4",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Ethereum",
+    "tvlUsd": 9330613,
+    "apy": 5.45523
+   },
+   {
+    "pool": "3e7c5e93-b741-573d-b699-22d823038e61",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Base",
+    "tvlUsd": 5614116,
+    "apy": 4.5698
+   },
+   {
+    "pool": "4227cd0e-43dd-558f-b6f9-cf6db1716c4b",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Ethereum",
+    "tvlUsd": 4999006,
+    "apy": 4.97392
+   },
+   {
+    "pool": "112f7929-e3ee-487e-a322-c7c8003b312c",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Monad",
+    "tvlUsd": 4555123,
+    "apy": 0
+   },
+   {
+    "pool": "b7ce5baf-7d76-46f7-8a7b-28b7e72ed2b7",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Pharos",
+    "tvlUsd": 3832613,
+    "apy": 4.5698
+   },
+   {
+    "pool": "1767cdec-8dad-4b8c-a61c-fa10ab4d3f92",
+    "name": null,
+    "symbol": "USDY",
+    "project": "ondo-yield-assets",
+    "chain": "Arbitrum",
+    "tvlUsd": 3141941,
+    "apy": 3.75
+   },
+   {
+    "pool": "49a78144-99cc-5d6a-b635-e794c4f186c6",
+    "name": null,
+    "symbol": "USDT",
+    "project": "centrifuge-protocol",
+    "chain": "Ethereum",
+    "tvlUsd": 1639967,
+    "apy": 10.25142
+   },
+   {
+    "pool": "2124efc3-dd88-4cb6-903f-25da0c93aa39",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "BSC",
+    "tvlUsd": 1024776,
+    "apy": 4.5698
+   },
+   {
+    "pool": "f1624ad2-c2c9-4b9e-ad2f-b0870e94bfb7",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "BSC",
+    "tvlUsd": 1022784,
+    "apy": 5.46233
+   },
+   {
+    "pool": "61dda193-1188-5a5b-a9f4-2cffa06178b4",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Pharos",
+    "tvlUsd": 1002007,
+    "apy": 10.25142
+   },
+   {
+    "pool": "7c4e5b30-e9ee-450d-b162-5994998afd21",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Plume Mainnet",
+    "tvlUsd": 556278,
+    "apy": 4.5698
+   },
+   {
+    "pool": "9a55e93d-a158-4282-aa6d-98a26eae0067",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Monad",
+    "tvlUsd": 507773,
+    "apy": 0
+   },
+   {
+    "pool": "f0cc1083-1272-47fc-96b4-ce44d3b2c524",
+    "name": null,
+    "symbol": "USDT",
+    "project": "centrifuge-protocol",
+    "chain": "Ethereum",
+    "tvlUsd": 442573,
+    "apy": 38.10713
+   },
+   {
+    "pool": "b5d7a190-38d2-4fdd-8c14-1fd00c11bce1",
+    "name": null,
+    "symbol": "USDY",
+    "project": "ondo-yield-assets",
+    "chain": "Mantle",
+    "tvlUsd": 365397,
+    "apy": 3.75
+   },
+   {
+    "pool": "29f92159-0f5c-421d-9e4a-705ae75fcfff",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Ethereum",
+    "tvlUsd": 242473,
+    "apy": 24.49732
+   },
+   {
+    "pool": "79db2807-ca66-5e33-9f5a-2dc0f1be60ae",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Ethereum",
+    "tvlUsd": 200347,
+    "apy": 113.02281
+   },
+   {
+    "pool": "43491afc-b9a5-4f12-974a-1f9cdfb5d7d5",
+    "name": null,
+    "symbol": "TBILL",
+    "project": "openeden-tbill",
+    "chain": "Solana",
+    "tvlUsd": 168572,
+    "apy": 3.69987
+   },
+   {
+    "pool": "61813eeb-ed26-44ee-bb0b-059f0faa1dcf",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Base",
+    "tvlUsd": 156134,
+    "apy": 5.45523
+   },
+   {
+    "pool": "85d9b9d3-3ca0-410c-bde0-d8ab07fe21c3",
+    "name": null,
+    "symbol": "USDO",
+    "project": "openeden-usdo",
+    "chain": "BSC",
+    "tvlUsd": 145335,
+    "apy": 3.44505
+   },
+   {
+    "pool": "3f1aa197-15aa-5e29-b1e0-e3db562491bb",
+    "name": null,
+    "symbol": "APXUSD",
+    "project": "centrifuge-protocol",
+    "chain": "Ethereum",
+    "tvlUsd": 112409,
+    "apy": 26.19325
+   },
+   {
+    "pool": "0f0a9cb2-5879-4c03-8a28-c25addeaaaf7",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "OP Mainnet",
+    "tvlUsd": 100077,
+    "apy": 24.46832
+   },
+   {
+    "pool": "59bc1b73-0540-54dd-b72b-176cec55e6ad",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Ethereum",
+    "tvlUsd": 99979,
+    "apy": 0
+   },
+   {
+    "pool": "35285f0e-128c-4a1f-b9cd-f06847971f31",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "OP Mainnet",
+    "tvlUsd": 99969,
+    "apy": 24.49732
+   },
+   {
+    "pool": "fbee08a8-045e-558b-bc90-1c0ce8ba2c43",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Avalanche",
+    "tvlUsd": 99697,
+    "apy": 38.10713
+   },
+   {
+    "pool": "bb569576-9211-570b-b60d-fab36a132589",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Pharos",
+    "tvlUsd": 98976,
+    "apy": 38.10713
+   },
+   {
+    "pool": "cfde8bc9-a302-5959-a2f2-0b68d36c8e22",
+    "name": null,
+    "symbol": "USDC",
+    "project": "centrifuge-protocol",
+    "chain": "Ethereum",
+    "tvlUsd": 98933,
+    "apy": 38.09583
+   },
+   {
+    "pool": "0d635c7d-0a5f-4d6d-9e3e-1245442b9727",
+    "name": null,
+    "symbol": "USDY",
+    "project": "ondo-yield-assets",
+    "chain": "Noble",
+    "tvlUsd": 72002,
+    "apy": 3.75
+   },
+   {
+    "pool": "b725c6e2-7f79-4b3c-9a21-f3c1909ec5e0",
+    "name": null,
+    "symbol": "USDO",
+    "project": "openeden-usdo",
+    "chain": "Base",
+    "tvlUsd": 34919,
+    "apy": 3.44505
+   },
+   {
+    "pool": "509c3a20-3e95-42d5-8835-c4b74beb1baf",
+    "name": null,
+    "symbol": "USDY",
+    "project": "ondo-yield-assets",
+    "chain": "Osmosis",
+    "tvlUsd": 18826,
+    "apy": 3.75
+   }
+  ]
+ }
+}

@@ -108,6 +108,12 @@ stated date, unaltered. Daily internal snapshots are hash-chained (each day bind
 previous anchor) and served free via the
 [public API](https://duewall.com/api/).
 
+**Source-document hashes** — `FACTSHEETS.json` in each snapshot lists the sha256 of every
+issuer factsheet PDF that `legal_doc` events were extracted from, together with the official
+source URL. We do not redistribute the documents (publisher copyright); download from the
+issuer gateway and verify the hash. Those hashes are covered by the same `MANIFEST.ots`
+Bitcoin proof.
+
 ## Contributing
 
 Read [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md). In short: **one issuer =

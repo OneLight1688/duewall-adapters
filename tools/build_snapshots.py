@@ -8,6 +8,9 @@ Outputs into data-snapshots/<date>/:
     terms.csv           structured liquidity terms per fund
     pools_snapshot.json Centrifuge pool tokens + DefiLlama RWA pools (copy)
     maturity_wall_sample.json  monthly on-chain maturity distribution (copy)
+    FACTSHEETS.json     sha256 of every issuer factsheet PDF we extracted from
+                        (hashes + official source URLs — we do NOT redistribute
+                        the PDFs; download from the issuer and verify)
     MANIFEST.json       snapshot metadata + sha256 of each file
 
 MIT License — Copyright (c) 2026 DueWall Labs
@@ -20,6 +23,7 @@ import csv
 import hashlib
 import json
 import os
+import re
 
 EVENT_FIELDS = [
     "token", "issuer", "event_type", "date", "date_confidence", "date_recurring",
@@ -98,6 +102,48 @@ def main() -> None:
         if os.path.exists(src):
             with open(src, "rb") as r, open(os.path.join(out, name), "wb") as w:
                 w.write(r.read())
+
+    # 3b) FACTSHEETS.json — issuer-source document hashes (verifiable provenance).
+    # Local PDF copies live in <src>/factsheets/ (filename carries the IPFS CID
+    # prefix, e.g. 281474976710662_janus_henderson_treasury_fund_QmPndy6M.pdf).
+    # We publish sha256 + official source URL only — NOT the PDFs themselves.
+    cid_re = re.compile(r"(Qm[1-9A-HJ-NP-Za-km-z]{6,})")
+    url_by_cid = {}
+    for e in legal:
+        u = e.get("source_url") or ""
+        m = cid_re.search(u)
+        if m:
+            url_by_cid[m.group(1)] = u
+    factsheets = []
+    fs_dir = os.path.join(args.src, "factsheets")
+    if os.path.isdir(fs_dir):
+        for p in sorted(os.listdir(fs_dir)):
+            if not p.lower().endswith(".pdf"):
+                continue
+            full = os.path.join(fs_dir, p)
+            m = cid_re.search(p)
+            source_url = next((u for cid, u in url_by_cid.items()
+                               if m and cid.startswith(m.group(1))), None)
+            factsheets.append({
+                "file": p,
+                "sha256": sha256(full),
+                "bytes": os.path.getsize(full),
+                "pool_id": p.split("_", 1)[0] if "_" in p else None,
+                "source_url": source_url,
+            })
+    if factsheets:
+        with open(os.path.join(out, "FACTSHEETS.json"), "w", encoding="utf-8") as f:
+            json.dump({
+                "note": "sha256 of the issuer factsheet PDFs each legal_doc event "
+                        "was extracted from. We do not redistribute the documents; "
+                        "download from source_url (issuer/official gateway) and "
+                        "verify the hash. Hashes are Bitcoin-anchored via the "
+                        "MANIFEST.ots OpenTimestamps proof in this directory.",
+                "documents": factsheets,
+            }, f, indent=1)
+        print(f"factsheets: {len(factsheets)} document hashes recorded")
+    else:
+        print("factsheets: none found in --src/factsheets (skipping FACTSHEETS.json)")
 
     # 4) manifest
     manifest = {"snapshot_date": args.date, "license": "CC-BY-4.0",
