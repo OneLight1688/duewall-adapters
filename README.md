@@ -4,6 +4,12 @@ Open-source extraction adapters and CC-BY data snapshots for
 [DueWall](https://duewall.com) — **the maturity calendar for tokenized credit**,
 built for the RWA (real-world asset) data ecosystem.
 
+**Why this exists** — everyone publishes TVL and APY for tokenized credit; nobody publishes
+*when it comes due*. Chains only record history: Maple's public API lists 266 loans, all
+matured, zero forward maturities visible on-chain. The forward-looking layer lives in
+documents — factsheets and loan agreements. These adapters read them, with per-field source
+links and human verification, to restore the liability time-axis that TradFi investors expect.
+
 Public on-chain APIs only show settled history. When a tokenized private-credit
 loan matures, when a fund's redemption window opens, what the lockup terms are —
 that lives in **documents** (loan agreements, fund factsheets), not in chain
@@ -42,7 +48,8 @@ carries `source_url` and `verified_by`. See
 ## Quickstart
 
 **Just want the data?** (no code required) — grab the latest CSV from
-[`data-snapshots/`](data-snapshots/) and cite per
+[`data-snapshots/`](data-snapshots/) (coverage rules: [duewall.com/coverage/](https://duewall.com/coverage/))
+and cite per
 [`data-snapshots/CITATION.md`](data-snapshots/CITATION.md). Or in Python:
 
 ```python
@@ -82,6 +89,12 @@ Docs: **https://duewall.com/api/** · Schema: [`docs/SCHEMA.md`](docs/SCHEMA.md)
 See [`data-snapshots/`](data-snapshots/) — CSV/JSON, one directory per snapshot
 date. License: **CC-BY 4.0** (code in this repo: MIT). Citation formats in
 [`data-snapshots/CITATION.md`](data-snapshots/CITATION.md).
+
+**Bitcoin-anchored** — every published manifest carries its own `MANIFEST.ots`
+(OpenTimestamps): anyone can verify, without trusting us, that this data existed at its
+stated date, unaltered. Daily internal snapshots are hash-chained (each day binds the
+previous anchor) and served free via the
+[public API](https://duewall.com/api/).
 
 ## Contributing
 
