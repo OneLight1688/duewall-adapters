@@ -28,6 +28,13 @@ an output directory for raw response caches (so runs are reproducible).
 - [`goldfinch_pools.py`](goldfinch_pools.py) — reads Goldfinch's official
   public Goldsky subgraph (no auth): 24 tranched pools + 31 credit lines, all
   matured. Same verification-baseline role.
+- [`pareto_epochs.py`](pareto_epochs.py) — reads Pareto Credit's epoch-based
+  credit vaults (IdleCDOEpochVariant) directly on-chain via eth_call: recurring
+  epoch redemption windows (weekly/bi-weekly/monthly) + NAV per vault, 5 vaults
+  across Ethereum & Optimism. The first *forward-looking* dated-obligation
+  source in the set — where the chain doesn't publish the next window date, the
+  adapter says so instead of guessing. Registry discovered from verified
+  contracts (tranche → queue → CDO), cross-checked vs docs.pareto.credit.
 
 ## Roadmap (as we clean them for publication)
 
