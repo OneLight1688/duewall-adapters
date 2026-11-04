@@ -106,7 +106,8 @@ date. License: **CC-BY 4.0** (code in this repo: MIT). Citation formats in
 (OpenTimestamps): anyone can verify, without trusting us, that this data existed at its
 stated date, unaltered. Daily internal snapshots are hash-chained (each day binds the
 previous anchor) and served free via the
-[public API](https://duewall.com/api/).
+[public API](https://duewall.com/api/) — including a daily on-chain NAV/price
+series per pool token (`/api/v1/price_history.json`).
 
 **Source-document hashes** — `FACTSHEETS.json` in each snapshot lists the sha256 of every
 issuer factsheet PDF that `legal_doc` events were extracted from, together with the official
