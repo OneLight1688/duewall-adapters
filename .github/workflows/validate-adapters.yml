@@ -1,0 +1,39 @@
+name: validate-adapters
+
+on:
+  pull_request:
+    paths: ["adapters/**", "tools/**"]
+  push:
+    branches: [main]
+    paths: ["adapters/**", "tools/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: pip install pycryptodome
+      - name: Validate adapters (no credentials, schema v1.2, no guessing)
+        run: python tools/validate_adapter.py adapters/*.py
+
+  automerge:
+    # 合格即并入主线：validate 全绿且 PR 未被标记 hold → 自动 squash merge
+    needs: validate
+    if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'hold')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto-merge (squash)
+        run: gh pr merge --auto --squash "$NUMBER" --repo "$REPO"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}

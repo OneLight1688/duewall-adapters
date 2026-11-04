@@ -21,6 +21,7 @@ Honesty rules honoured (never guess):
 stdlib only. Usage: python3 pareto_epochs.py [out.jsonl]
 """
 import json
+import os
 import sys
 import time
 import urllib.request
@@ -96,6 +97,23 @@ REGISTRY = [
      "strategy": "0x2bcf124aa4f7f32f0fe54f498d924b934c942b31",
      "borrower_type": "prime brokerage, fixed rate"},
 ]
+
+
+def _load_overrides():
+    """人工核验 UI 驳回时写入的机器可执行修复（NAV 小数位/官方公布的下一窗口日期）。
+    位置: <repo>/data/verification/overrides_pareto.json 或环境变量 PARETO_OVERRIDES"""
+    p = os.environ.get("PARETO_OVERRIDES")
+    if not p:
+        p = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                         "..", "data", "verification", "overrides_pareto.json")
+    try:
+        with open(p, encoding="utf-8") as f:
+            return json.load(f).get("vaults", {})
+    except Exception:
+        return {}
+
+
+OVERRIDES = _load_overrides()
 
 
 def rpc_call(chain, method, params, tries=2):
@@ -177,12 +195,18 @@ def build_events():
         ch, cdo = v["chain"], v["cdo"]
         st = read_vault(v)
         nav_raw = st["getContractValue()"]
-        nav_usd = round(nav_raw / 1e6, 2) if nav_raw is not None else None
+        ov = OVERRIDES.get(v["aa"].lower(), {})
+        nav_dp = int(ov.get("nav_decimals", 6))
+        nav_usd = round(nav_raw / (10 ** nav_dp), 2) if nav_raw is not None else None
         base_extra = {
+            "human_overrides": {k: ov[k] for k in ("nav_decimals", "next_window_date")
+                                if k in ov} or None,
             "cdo": cdo, "queue": v.get("queue"), "escrow": v.get("escrow"),
             "aa_tranche": v["aa"], "bb_tranche": v["bb"], "strategy": v["strategy"],
             "vault_name": v["name"], "chain": ch, "borrower_type": v["borrower_type"],
-            "nav_raw": nav_raw, "nav_assumption": "6dp USDC per docs.pareto.credit live-vaults",
+            "nav_raw": nav_raw,
+            "nav_assumption": f"{nav_dp}dp underlying per docs/live-vaults"
+                              + (" (human-verified via verification UI)" if "nav_decimals" in ov else ""),
             "epoch_duration_s": st["epochDuration()"],
             "buffer_period_s": st["bufferPeriod()"],
             "is_epoch_running": st["isEpochRunning()"],
@@ -219,17 +243,31 @@ def build_events():
                                     "window_note": "current running epoch ends; requests queue "
                                                    "for the following epoch (IdleCDOEpochQueue)"}))
         elif end and running:
-            # on-chain end date is stale while running (e.g. FalconX) — never guess forward
+            # on-chain end date is stale while running (e.g. FalconX) — never guess forward;
+            # a human-provided next_window_date override (via verification UI) may fill it in
+            next_ov = ov.get("next_window_date")
             events.append(event(
                 token=f"pareto:{ch}:{v['aa']}", etype="redemption_window",
-                date=None, conf="unknown", amount=nav_usd, src_url=src, recurring=rec,
+                date=next_ov, conf="estimated" if next_ov else "unknown",
+                amount=nav_usd, src_url=src, recurring=rec,
                 terms=terms, extra={**base_extra, "stale_onchain_end_date": end,
-                                    "window_note": "on-chain epochEndDate is in the past while "
-                                                   "epoch runs — next end not published on-chain; "
-                                                   "human verification required"}))
+                                    "window_note": ("next window per human-provided override "
+                                                    "(official page)" if next_ov else
+                                                    "on-chain epochEndDate is in the past while "
+                                                    "epoch runs — next end not published on-chain; "
+                                                    "human verification required")}))
         else:
             base_extra["vault_idle"] = True
-            base_extra["window_note"] = "no epoch running (between epochs) — no dated obligation"
+            next_ov = ov.get("next_window_date")
+            if next_ov:
+                events.append(event(
+                    token=f"pareto:{ch}:{v['aa']}", etype="redemption_window",
+                    date=next_ov, conf="estimated", amount=nav_usd, src_url=src,
+                    recurring=rec, terms=terms,
+                    extra={**base_extra, "window_note": "vault idle on-chain; next window per "
+                                                        "human-provided override (official page)"}))
+            else:
+                base_extra["window_note"] = "no epoch running (between epochs) — no dated obligation"
     return events
 
 
