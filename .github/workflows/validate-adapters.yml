@@ -2,10 +2,10 @@ name: validate-adapters
 
 on:
   pull_request:
-    paths: ["adapters/**", "tools/**"]
+    paths: ["adapters/**", "tools/**", "runtime/**", "profiles/**"]
   push:
     branches: [main]
-    paths: ["adapters/**", "tools/**"]
+    paths: ["adapters/**", "tools/**", "runtime/**", "profiles/**"]
   workflow_dispatch:
 
 permissions:
@@ -21,9 +21,11 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install deps
-        run: pip install pycryptodome
-      - name: Validate adapters (no credentials, schema v1.2, no guessing)
+        run: pip install pycryptodome jsonschema
+      - name: Validate adapter code (no credentials, schema v1.2, no guessing)
         run: python tools/validate_adapter.py adapters/*.py
+      - name: Validate issuer profiles (schema + runtime + events)
+        run: python tools/validate_profile.py
 
   automerge:
     # 合格即并入主线：validate 全绿且 PR 未被标记 hold → 自动 squash merge

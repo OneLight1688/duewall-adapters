@@ -1,0 +1,26 @@
+{
+  "profile_version": 1,
+  "issuer": "defillama",
+  "engine": "rest",
+  "display_name": "DefiLlama RWA yield pools",
+  "description": "Cross-reference layer: RWA-flagged yield pools TVL/APY from DefiLlama public API (press-level source, reference only).",
+  "event_defaults": {"source_type": "press", "verified_by": "adapter_defillama_v0"},
+  "rest": {
+    "endpoint": "https://yields.llama.fi/pools",
+    "list_path": "data",
+    "filter": {"field": "project", "op": "contains_any",
+               "values": ["maple", "centrifuge", "ondo", "openeden", "goldfinch",
+                          "mount", "tradable", "credix", "homium", "huma", "truefi", "figure"]},
+    "sort_by": "tvlUsd",
+    "limit": 50
+  },
+  "mapping": {
+    "token": "llama:{pool}",
+    "source_url": "https://defillama.com/yields/pool/{pool}",
+    "event_type": "nav_report",
+    "date": "$TODAY",
+    "date_confidence": "exact",
+    "amount": {"field": "tvlUsd", "round": 2},
+    "extra": {"apy": "{apy}", "pool_name": "{name}", "symbol": "{symbol}", "chain": "{chain}"}
+  }
+}

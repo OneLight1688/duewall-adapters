@@ -1,0 +1,95 @@
+{
+  "profile_version": 1,
+  "issuer": "pareto",
+  "engine": "chain",
+  "display_name": "Pareto Credit (formerly Idle Finance)",
+  "description": "Epoch-based credit vaults (IdleCDOEpochVariant): recurring epoch redemption windows + NAV. Registry discovered from verified contracts 2026-11-04 (tranche -> queue -> CDO), cross-checked vs docs.pareto.credit.",
+  "event_defaults": {"source_type": "chain", "verified_by": "adapter_pareto_v0"},
+  "chains": {
+    "ethereum": {
+      "rpc": ["https://eth.drpc.org", "https://cloudflare-eth.com", "https://1rpc.io/eth",
+              "https://rpc.flashbots.net", "https://gateway.tenderly.co/public/mainnet",
+              "https://eth-mainnet.public.blastapi.io"],
+      "explorer": "https://etherscan.io/address/"
+    },
+    "optimism": {
+      "rpc": ["https://optimism-rpc.publicnode.com", "https://1rpc.io/op",
+              "https://optimism.drpc.org", "https://mainnet.optimism.io"],
+      "explorer": "https://optimistic.etherscan.io/address/"
+    }
+  },
+  "contract": {
+    "calls": {
+      "epochEndDate": "0x75d1497b",
+      "epochDuration": "0x4ff0876a",
+      "bufferPeriod": "0x0553c2e7",
+      "isEpochRunning": "0xc5c75098",
+      "defaulted": "0x69e25ec1",
+      "getContractValue": "0xdc82697c",
+      "lastEpochApr": "0x2544e841"
+    },
+    "entities": [
+      {"id": "fasanara", "name": "Fasanara Digital", "chain": "ethereum",
+       "cdo": "0xf6223c567f21e33e859ed7a045773526e9e3c2d5",
+       "queue": "0x0b4F695B05902efc14344d19ED1d0B0E061C8A3E",
+       "aa": "0x45054c6753b4Bce40C5d54418DabC20b070F85bE",
+       "bb": "0xed9cd82076160bbc5f734d596a039baf616d44c4",
+       "strategy": "0xc35d078092872ec1f2ae82bcd6f0b6b89f0850de",
+       "borrower_type": "basis trading (delta neutral), floating rate"},
+      {"id": "adaptive", "name": "Adaptive Frontier", "chain": "ethereum",
+       "cdo": "0x14b8e918848349d1e71e806a52c13d4e0d3246e0",
+       "queue": "0x5eCF8bF9eae51c2FF47FAc8808252FaCd8e36797",
+       "aa": "0xae7913c672c7F1f76C2a1a0Ac4de97d082681234",
+       "bb": "0xff80e0de1cc54b110632da8a3296e52590cb2374",
+       "strategy": "0xa30be796fb2babf9228359e86a041c14e29f86fc",
+       "borrower_type": "high-frequency trading, fixed rate"},
+      {"id": "rockawayx", "name": "RockawayX Credit", "chain": "ethereum",
+       "cdo": "0x9cf358aff79dea96070a85f00c0ac79569970ec3",
+       "escrow": "0xB08aFCF83ed084DD7E4df0D83F4f4a2be9109944",
+       "aa": "0xEC6a70F62a83418c7fb238182eD2865F80491a8B",
+       "bb": "0x53026b3adb9956dd4d4c381e1544c998c38d140d",
+       "strategy": "0x3fc0265e92eeafed0ccd9f8621764ce0981882ce",
+       "borrower_type": "private credit & DeFi liquidity, fixed rate"},
+      {"id": "abraxas", "name": "Abraxas Capital (Heka Elysium Alpha Bitcoin)", "chain": "ethereum",
+       "cdo": "0x0ad21c3ac4ffe7c1ed2b1b717cd051ded365fa32",
+       "queue": "0xeBa43518e4fddA8D82Ad711DA3b27717779DBdF7",
+       "aa": "0x6dbDEeF7a188bEaFFC2c57006e5D8edAf0C0e9e6",
+       "bb": "0xaec53e87b91bccb5350244a3b932d89b28de1ea3",
+       "strategy": "0xe7e13f902ea13e6eaaa4ed9a2de5898436d12cbf",
+       "borrower_type": "cross-market arbitrage, fixed rate"},
+      {"id": "falconx", "name": "FalconX (curated by M11 Credit)", "chain": "optimism",
+       "cdo": "0xd2c0d848aa5ad1a4c12be89e713e70b73211989b",
+       "queue": "0x463465c334742D72907CA5fB97db44688B4EC3dC",
+       "aa": "0x24e16F9Fad32891f8bA69cE8fEdd273A2649331A",
+       "bb": "0xb967000b6bb3fcb17018030761da9ea2b7e79c3b",
+       "strategy": "0x2bcf124aa4f7f32f0fe54f498d924b934c942b31",
+       "borrower_type": "prime brokerage, fixed rate"}
+    ]
+  },
+  "mapping": {
+    "token": "pareto:{chain}:{aa}",
+    "source_url": "{explorer}{cdo}",
+    "nav": {"call": "getContractValue", "decimals": 6, "fix_key": "nav_decimals",
+            "assumption_template": "{nav_dp}dp underlying per docs/live-vaults{ov_note}"},
+    "apr": {"call": "lastEpochApr", "scale": 1e18, "precision": 4},
+    "redemption_window": {
+      "date_call": "epochEndDate", "running_call": "isEpochRunning",
+      "duration_call": "epochDuration", "buffer_call": "bufferPeriod",
+      "recurrence": [{"max_days": 8, "label": "weekly"},
+                     {"max_days": 15, "label": "bi-weekly"},
+                     {"max_days": 35, "label": "monthly"}],
+      "window_fix_key": "next_window_date",
+      "terms": {"structure": "Epoch-based credit vault (AA/BB tranches, IdleCDOEpochVariant)",
+                "settlement": "claim after epoch close", "base_currency": "USDC"}
+    },
+    "extra": {
+      "cdo": "{cdo}", "queue": "{queue}", "escrow": "{escrow}",
+      "aa_tranche": "{aa}", "bb_tranche": "{bb}", "strategy": "{strategy}",
+      "vault_name": "{name}", "chain": "{chain}", "borrower_type": "{borrower_type}",
+      "nav_raw": "{getContractValue}",
+      "nav_assumption": "{nav_dp}dp underlying per docs/live-vaults{ov_note}",
+      "epoch_duration_s": "{epochDuration}", "buffer_period_s": "{bufferPeriod}",
+      "is_epoch_running": "{isEpochRunning}", "defaulted": "{defaulted}"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "profile_version": 1,
+  "issuer": "maple",
+  "engine": "graphql",
+  "display_name": "Maple Finance",
+  "description": "On-chain loan maturities via Maple public GraphQL (v2). Verification baseline: 266 loans, all matured/liquidated — zero future maturities visible on-chain (the structural finding).",
+  "event_defaults": {"source_type": "chain", "verified_by": "adapter_maple_v0"},
+  "graphql": {
+    "endpoint": "https://api.maple.finance/v2/graphql",
+    "query": "{ loans(first:1000) { id state maturityDate startDate principalOwed } }",
+    "list_path": "data.loans"
+  },
+  "mapping": {
+    "token": "maple:loan:{id}",
+    "source_url": "https://app.maple.finance/loans/{id}",
+    "event_type": "maturity",
+    "date": {"field": "maturityDate", "type": "unix_ts", "null_if_zero": true},
+    "amount": {"field": "principalOwed", "type": "raw"},
+    "extra": {"startDate": {"field": "startDate", "type": "unix_ts"}},
+    "resolution": {
+      "event_type": "maturity_resolution",
+      "state_field": "state",
+      "date": "$TODAY",
+      "map": {"Matured": "paid", "Liquidated": "liquidated",
+              "LiquidatedAndClaimed": "liquidated"}
+    }
+  }
+}
