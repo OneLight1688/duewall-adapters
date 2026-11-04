@@ -1,7 +1,11 @@
-# Adapters
+# Adapters (legacy path)
 
-One module per issuer. Each adapter turns a **public** source into
-schema-v1.1 events (see [`../docs/SCHEMA.md`](../docs/SCHEMA.md)).
+These self-contained adapters were the original per-issuer modules. **New
+issuers should not start here** — use the universal runtime with a declarative
+profile ([`docs/PROFILE_SPEC.md`](../docs/PROFILE_SPEC.md)); these modules
+remain runnable for provenance and as semantics reference. Each turns a
+**public** source into schema-v1.2 events (see
+[`../docs/SCHEMA.md`](../docs/SCHEMA.md)).
 
 ## Contract
 

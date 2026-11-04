@@ -20,11 +20,15 @@ DueWall builds the forward-looking calendar by reading those documents. This
 repository contains the parts we open:
 
 ```
-adapters/          issuer extraction adapters (MIT) — turn public sources into
-                   structured events
+runtime/           universal adapter runtime — one engine set (chain/rest/graphql);
+                   honesty rules & verification hooks live here (MIT)
+profiles/          declarative per-issuer configs (JSON Schema v1) — adding an
+                   issuer = a data file, not code
+adapters/          legacy per-issuer adapters (MIT) — kept for provenance;
+                   new issuers go through profiles
 data-snapshots/    periodic CC-BY snapshots of the structured output
-tools/             snapshot builder
-docs/              event schema, contribution guide
+tools/             snapshot builder, profile/adapter validators
+docs/              event schema, profile spec, contribution guide
 ```
 
 ## Why open?
@@ -37,13 +41,21 @@ docs/              event schema, contribution guide
 3. **Citation-friendly** — data snapshots are CC-BY 4.0: use them in research,
    newsletters, dashboards. Cite and link; that's the whole price.
 
-## Adapter interface (summary)
+## One runtime, many profiles (summary)
 
-Each adapter is a self-contained module exposing `fetch() -> list[dict]` and
-emitting events that conform to [`docs/SCHEMA.md`](docs/SCHEMA.md). Every event
-carries `source_url` and `verified_by`. See
-[`adapters/README.md`](adapters/README.md) for the full contract and
-[`adapters/maple_loans.py`](adapters/maple_loans.py) for a working example.
+New issuers are **declarative profiles** (JSON), not code: a profile says *where*
+the data lives (contract addresses / API endpoints) and *how* fields map to
+schema v1.2 events; the runtime owns transport, honesty rules (no guessed dates,
+mandatory `source_url`, `status: draft` until human-checked) and the
+human-verification overrides. See
+[`docs/PROFILE_SPEC.md`](docs/PROFILE_SPEC.md) and the pilots:
+[`profiles/pareto_credit.json`](profiles/pareto_credit.json) (on-chain),
+[`profiles/maple_loans.json`](profiles/maple_loans.json) (GraphQL),
+[`profiles/defillama_rwa.json`](profiles/defillama_rwa.json) (REST).
+
+The legacy adapters in [`adapters/`](adapters/) stay runnable for provenance;
+genuinely new *semantics* (a protocol that doesn't fit any profile) are engine
+changes, reviewed by maintainers — never crammed into config flags.
 
 ## Quickstart
 
@@ -98,10 +110,11 @@ previous anchor) and served free via the
 
 ## Contributing
 
-Read [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md). In short: one issuer per
-adapter, rule-based extraction with per-field source quotes, no scraping of
-access-controlled sources, every PR must include sample source documents or
-public URLs so reviewers can verify.
+Read [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md). In short: **one issuer =
+one profile** (a JSON data file — no code to review, CI validates schema + runs
+it and checks every emitted event, then auto-merges when green). Public sources
+only; nothing guessed; the first events land in human verification before they
+publish.
 
 ## Links
 

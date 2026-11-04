@@ -74,6 +74,9 @@ Missing fields are **omitted or null — never guessed**. Downstream renders sho
 2. PDF text is extracted with pdfplumber; beware ligature loss
    (`settlement` → `seément`) — match with `se.?lement`, `di?erent`, etc.
 3. `status` starts at `draft`; only a human check against the source document
-   moves it to `verified`. Both states are displayed publicly.
+   moves it to `verified`. Both states are displayed publicly. On approval the
+   verification system records `human_verified_at` (ISO timestamp) and keeps
+   `verified_by` = the extractor id — never overwrite `verified_by`, downstream
+   tooling groups on it.
 4. Never scrape access-controlled sources. Public APIs, official docs, public
    IPFS gateways only.
