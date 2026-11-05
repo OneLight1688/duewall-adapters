@@ -1,0 +1,40 @@
+{
+ "note": "sha256 of the issuer factsheet PDFs each legal_doc event was extracted from. We do not redistribute the documents; download from source_url (issuer/official gateway) and verify the hash. Hashes are Bitcoin-anchored via the MANIFEST.ots OpenTimestamps proof in this directory.",
+ "documents": [
+  {
+   "file": "281474976710662_janus_henderson_treasury_fund_QmPndy6M.pdf",
+   "sha256": "e1500c030e87104e9eece2d929ebe36816e491d17ce30f85dc500bb118815df1",
+   "bytes": 285736,
+   "pool_id": "281474976710662",
+   "source_url": "https://centrifuge-files.mypinata.cloud/ipfs/QmPndy6Mvq8wctgpYw7NnMvc2UaDVFry3VZNFG8qJ6TX3e"
+  },
+  {
+   "file": "281474976710663_janus_henderson_aaa_clo_fund_QmaEDaB2.pdf",
+   "sha256": "c1aa56c63c5bd6640b3c0a5bf39de869dc6e2d136e988bdea3423150e916ac8f",
+   "bytes": 382720,
+   "pool_id": "281474976710663",
+   "source_url": "https://centrifuge-files.mypinata.cloud/ipfs/QmaEDaB2vpD559Hu2Vc2zLbBCDbhqcThSEU1n3WDnnETeJ"
+  },
+  {
+   "file": "281474976710665_janus_henderson_anemoy_s&p_500_fund_QmZhjTbU.pdf",
+   "sha256": "8fc0e4be2550265b982fe37ed33462a0348e664965a72d4cbce3297d8161edc2",
+   "bytes": 232646,
+   "pool_id": "281474976710665",
+   "source_url": "https://centrifuge-files.mypinata.cloud/ipfs/QmZhjTbU1mhn4ANe92qakUwRyMrWZGLnWYqMit7x3H3A7o"
+  },
+  {
+   "file": "281474976710671_nylim_us_high_yield_bond_fund_QmNukN5o.pdf",
+   "sha256": "5befbb42fcc441f5911e70342d62c3d97743e7a7f2042cf288009569897289c8",
+   "bytes": 181964,
+   "pool_id": "281474976710671",
+   "source_url": "https://centrifuge-files.mypinata.cloud/ipfs/QmNukN5oQEmmZCBeXJgbAzfmFSeZ5Q84AKPYzYRC57E9uk"
+  },
+  {
+   "file": "281474976710677_schroder_international_selection_fund_em_QmTULWLQ.pdf",
+   "sha256": "9b5efc70fdc31221b4ca869b326cee6c9db79da8cf18d01d45aa9a9dffda9d71",
+   "bytes": 227678,
+   "pool_id": "281474976710677",
+   "source_url": "https://centrifuge-files.mypinata.cloud/ipfs/QmTULWLQJ1rPyuw17BfiqTRYskZnnPp4F9V39uzsF34rF9"
+  }
+ ]
+}

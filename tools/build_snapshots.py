@@ -28,15 +28,35 @@ import re
 EVENT_FIELDS = [
     "token", "issuer", "event_type", "date", "date_confidence", "date_recurring",
     "settlement", "amount_usd", "amount_pct_of_float", "seniority",
-    "source_type", "source_url", "verified_by", "status", "last_updated",
+    "source_type", "source_url", "verified_by", "status", "last_updated", "grade",
 ]
 
 TERM_FIELDS = [
-    "token", "issuer", "structure", "liquidity", "settlement",
+    "token", "issuer", "grade", "structure", "liquidity", "settlement",
     "min_investment", "min_investment_ccy", "mgmt_fee_bps",
     "inception", "domicile", "base_currency", "aum_usd", "aum_date",
     "status", "source_url",
 ]
+
+# Coverage grades — keep in sync with duewall-com build_site.py COVERAGE_GRADES.
+# A = terms human-verified & published · B = events covered, terms pending ·
+# M = below TVL bar, monitored. Grades describe DATA COMPLETENESS, never credit quality.
+COVERAGE_GRADES = {
+    "JTRSY": "A", "JAAA": "A", "SPXA": "A", "NYHB": "A", "SIEM": "A",
+    "centrifuge": "A",
+    "maple": "B", "goldfinch": "B", "ondo": "B", "openeden": "B", "credix": "B", "pareto": "B",
+    "Midas RWA": "M", "VanEck VBILL": "M", "Clearpool": "M",
+}
+
+
+def grade_of(issuer=None, token=None):
+    tok = (token or "").upper()
+    if tok in COVERAGE_GRADES:
+        return COVERAGE_GRADES[tok]
+    tail = tok.rsplit(":", 1)[-1]  # token 形如 centrifuge:<pool>:JTRSY → 取尾段
+    if tail in COVERAGE_GRADES:
+        return COVERAGE_GRADES[tail]
+    return COVERAGE_GRADES.get((issuer or "").lower())
 
 
 def sha256(path: str) -> str:
@@ -66,7 +86,8 @@ def main() -> None:
         w = csv.DictWriter(f, fieldnames=EVENT_FIELDS, extrasaction="ignore")
         w.writeheader()
         for e in events + legal:
-            w.writerow({k: e.get(k) for k in EVENT_FIELDS})
+            w.writerow({**{k: e.get(k) for k in EVENT_FIELDS},
+                        "grade": grade_of(e.get("issuer"), e.get("token")) or "B"})
 
     # 2) terms.csv — one row per fund with structured terms (latest AUM joined)
     nav = {}
@@ -85,6 +106,7 @@ def main() -> None:
             nv = nav.get(e["token"], {})
             w.writerow({
                 "token": e["token"], "issuer": e.get("issuer"),
+                "grade": grade_of(e.get("issuer"), e.get("token")),
                 "structure": t.get("structure"), "liquidity": t.get("liquidity"),
                 "settlement": t.get("settlement"),
                 "min_investment": t.get("min_investment"),

@@ -31,6 +31,25 @@ tools/             snapshot builder, profile/adapter validators
 docs/              event schema, profile spec, contribution guide
 ```
 
+## Coverage grades (A / B / M)
+
+Every record on duewall.com — and every row in the API and snapshots — carries a
+**coverage grade** (`grade` field). Grades describe **data completeness, never
+credit quality**:
+
+| Grade | Meaning | Currently |
+|-------|---------|-----------|
+| **A** | Terms human-verified against issuer factsheets & published (structured terms + fund page) | JTRSY, JAAA, SPXA, NYHB, SIEM, all Centrifuge pools |
+| **B** | Events covered by machine adapters with source links; structured terms pending human verification | Maple, Goldfinch, Ondo, OpenEden, Credix, Pareto |
+| **M** | Below the TVL bar for a dedicated adapter; monitored for promotion | Midas RWA, VanEck VBILL, Clearpool |
+
+Rules: an event-level record can never exceed the grade of the entity it belongs
+to; unmatched rows default to **B** (machine-collected, source-linked). New
+issuers enter at **B** and move to **A** only after a factsheet pass in human
+verification. The grade registry lives in
+[`tools/build_snapshots.py`](tools/build_snapshots.py) (`COVERAGE_GRADES`) and
+is kept in sync with the pipeline. Full policy: [duewall.com/coverage/](https://duewall.com/coverage/).
+
 ## Why open?
 
 1. **Auditability** — every datapoint on duewall.com links back to its source.
@@ -67,11 +86,11 @@ and cite per
 ```python
 import pandas as pd
 
-terms = pd.read_csv("data-snapshots/2026-10-25/terms.csv")
-events = pd.read_csv("data-snapshots/2026-10-25/events.csv")
+terms = pd.read_csv("data-snapshots/2026-11-05/terms.csv")
+events = pd.read_csv("data-snapshots/2026-11-05/events.csv")
 
-# every row links back to its source document
-print(events[["token", "event_type", "date", "status", "source_url"]].head())
+# every row links back to its source document; `grade` = coverage grade (A/B/M)
+print(events[["token", "event_type", "date", "status", "grade", "source_url"]].head())
 ```
 
 **Want to refresh the data yourself?** — run an adapter against its public
@@ -88,8 +107,8 @@ The full dataset behind this repo is also served as static JSON at
 **https://duewall.com/api/v1/** — CORS-enabled, CC-BY 4.0:
 
 ```bash
-curl https://duewall.com/api/v1/events.json   # all events (schema v1.2)
-curl https://duewall.com/api/v1/terms.json    # liquidity terms per fund
+curl https://duewall.com/api/v1/events.json   # all events (schema v1.2), each with a coverage grade
+curl https://duewall.com/api/v1/terms.json    # liquidity terms per fund (grade included)
 curl https://duewall.com/api/v1/pools.json    # pool NAV + TVL/APY snapshot
 curl https://duewall.com/api/v1/meta.json     # version, counts, license
 ```
