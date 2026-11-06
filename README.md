@@ -81,7 +81,9 @@ changes, reviewed by maintainers — never crammed into config flags.
 **Just want the data?** (no code required) — grab the latest CSV from
 [`data-snapshots/`](data-snapshots/) (coverage rules: [duewall.com/coverage/](https://duewall.com/coverage/))
 and cite per
-[`data-snapshots/CITATION.md`](data-snapshots/CITATION.md). Or in Python:
+[`data-snapshots/CITATION.md`](data-snapshots/CITATION.md). Python client on
+PyPI: `pip install duewall` ([pypi.org/project/duewall](https://pypi.org/project/duewall/),
+zero dependencies). Or load the CSVs directly:
 
 ```python
 import pandas as pd
