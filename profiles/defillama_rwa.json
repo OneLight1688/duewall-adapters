@@ -10,7 +10,9 @@
     "list_path": "data",
     "filter": {"field": "project", "op": "contains_any",
                "values": ["maple", "centrifuge", "ondo", "openeden", "goldfinch",
-                          "mount", "tradable", "credix", "homium", "huma", "truefi", "figure"]},
+                          "mount", "tradable", "credix", "homium", "huma", "truefi", "figure",
+                          "securitize-tokenized-aaa-clo-fund", "apollo-diversified-credit-securitize-fund",
+                          "vaneck-treasury-fund"]},
     "sort_by": "tvlUsd",
     "limit": 50
   },
