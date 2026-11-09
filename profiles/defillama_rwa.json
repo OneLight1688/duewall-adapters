@@ -12,7 +12,7 @@
                "values": ["maple", "centrifuge", "ondo", "openeden", "goldfinch",
                           "mount", "tradable", "credix", "homium", "huma", "truefi", "figure",
                           "securitize-tokenized-aaa-clo-fund", "apollo-diversified-credit-securitize-fund",
-                          "vaneck-treasury-fund"]},
+                          "vaneck-treasury-fund", "sky-lending"]},
     "sort_by": "tvlUsd",
     "limit": 50
   },
