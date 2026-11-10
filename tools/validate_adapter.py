@@ -25,7 +25,8 @@ B64 = re.compile(r"[A-Za-z0-9+/]{100,}={0,2}")
 REQUIRED = ["token", "issuer", "event_type", "date", "date_confidence",
             "amount_usd", "source_type", "source_url", "verified_by", "status", "last_updated"]
 ENUMS = {
-    "event_type": {"maturity", "redemption_window", "nav_report", "maturity_resolution"},
+    "event_type": {"maturity", "redemption_window", "nav_report", "maturity_resolution",
+                   "liquidity_window", "rate_decision"},
     "date_confidence": {"exact", "estimated", "unknown"},
     "source_type": {"legal_doc", "announcement", "chain", "press"},
     "status": {"draft", "verified"},

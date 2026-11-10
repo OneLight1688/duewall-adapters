@@ -14,7 +14,8 @@ REQUIRED = ["token", "issuer", "event_type", "date", "date_confidence",
             "amount_usd", "amount_pct_of_float", "seniority",
             "source_type", "source_url", "verified_by", "status", "last_updated"]
 ENUMS = {
-    "event_type": {"maturity", "redemption_window", "nav_report", "maturity_resolution"},
+    "event_type": {"maturity", "redemption_window", "nav_report", "maturity_resolution",
+                   "liquidity_window", "rate_decision"},
     "date_confidence": {"exact", "estimated", "unknown"},
     "source_type": {"legal_doc", "announcement", "chain", "press"},
     "status": {"draft", "verified"},
