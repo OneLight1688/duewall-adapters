@@ -1,8 +1,8 @@
 # duewall-adapters
 
 Open-source extraction adapters and CC-BY data snapshots for
-[DueWall](https://duewall.com) — **the maturity calendar for tokenized credit**,
-built for the RWA (real-world asset) data ecosystem.
+[DueWall](https://duewall.com) — **the debt calendar, daily data & event alerts for
+tokenized credit**, built for the RWA (real-world asset) data ecosystem.
 
 **Why this exists** — everyone publishes TVL and APY for tokenized credit; nobody publishes
 *when it comes due*. Chains only record history: Maple's public API lists 266 loans, all
@@ -22,7 +22,7 @@ repository contains the parts we open:
 ```
 runtime/           universal adapter runtime — one engine set (chain/rest/graphql);
                    honesty rules & verification hooks live here (MIT)
-profiles/          declarative per-issuer configs (JSON Schema v1) — adding an
+profiles/          declarative per-issuer configs (JSON Schema v1.3) — adding an
                    issuer = a data file, not code
 adapters/          legacy per-issuer adapters (MIT) — kept for provenance;
                    new issuers go through profiles
@@ -64,7 +64,7 @@ is kept in sync with the pipeline. Full policy: [duewall.com/coverage/](https://
 
 New issuers are **declarative profiles** (JSON), not code: a profile says *where*
 the data lives (contract addresses / API endpoints) and *how* fields map to
-schema v1.2 events; the runtime owns transport, honesty rules (no guessed dates,
+schema v1.3 events (maturity · liquidity_window · rate_decision · resolutions); the runtime owns transport, honesty rules (no guessed dates,
 mandatory `source_url`, `status: draft` until human-checked) and the
 human-verification overrides. See
 [`docs/PROFILE_SPEC.md`](docs/PROFILE_SPEC.md) and the pilots:
